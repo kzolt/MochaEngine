@@ -1,0 +1,9 @@
+#pragma once
+
+#include "Mocha/Core/Base.h"
+#include "Mocha/Core/Application.h"
+
+//////////////////////////////////////////////////
+// Entry Point
+//////////////////////////////////////////////////
+#include <Mocha/Core/Entrypoint.h>

@@ -1,0 +1,2 @@
+C:\Dev\Mocha\bin\Mocha\Debug-x64\Mocha.pdb
+C:\Dev\Mocha\bin-int\Mocha\Debug-x64\Mocha.pdb
