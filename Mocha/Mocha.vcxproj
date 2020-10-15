@@ -57,8 +57,9 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>MC_PLATFORM_WINDOWS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>MC_DEBUG;MC_PLATFORM_WINDOWS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)Mocha\Vendor\spdlog\include;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -71,8 +72,9 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>MC_PLATFORM_WINDOWS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>MC_DEBUG;MC_PLATFORM_WINDOWS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)Mocha\Vendor\spdlog\include;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -84,11 +86,15 @@
   <ItemGroup>
     <ClInclude Include="src\Mocha.h" />
     <ClInclude Include="src\Mocha\Core\Application.h" />
+    <ClInclude Include="src\Mocha\Core\Assert.h" />
     <ClInclude Include="src\Mocha\Core\Base.h" />
     <ClInclude Include="src\Mocha\Core\Entrypoint.h" />
+    <ClInclude Include="src\Mocha\Core\Log.h" />
+    <ClInclude Include="src\Mocha\Core\Ref.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Mocha\Core\Application.cpp" />
+    <ClCompile Include="src\Mocha\Core\Log.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -5,7 +5,6 @@ class Sandbox : public Mocha::Application
 public:
 	Sandbox()
 	{
-
 	}
 
 	~Sandbox()

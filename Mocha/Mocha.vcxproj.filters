@@ -27,9 +27,21 @@
     <ClInclude Include="src\Mocha\Core\Entrypoint.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Mocha\Core\Ref.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mocha\Core\Log.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mocha\Core\Assert.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Mocha\Core\Application.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mocha\Core\Log.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
