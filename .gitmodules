@@ -1,0 +1,3 @@
+[submodule "Mocha\\Vendor\\spdlog"]
+	path = Mocha\\Vendor\\spdlog
+	url = https://github.com/gabime/spdlog.git
