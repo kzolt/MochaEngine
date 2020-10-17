@@ -1,3 +1,4 @@
+#include "mcpch.h"
 #include "Log.h"
 
 namespace Mocha {
