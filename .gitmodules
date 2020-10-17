@@ -1,3 +1,6 @@
 [submodule "Mocha\\Vendor\\spdlog"]
 	path = Mocha\\Vendor\\spdlog
 	url = https://github.com/gabime/spdlog.git
+[submodule "Mocha/vendor/GLFW"]
+	path = Mocha/vendor/GLFW
+	url = https://github.com/TheCherno/glfw.git
