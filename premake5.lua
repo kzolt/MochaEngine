@@ -11,6 +11,14 @@ workspace "Mocha"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- Include directories relative to root folder (solution director)
+IncludeDir = {}
+IncludeDir["GLFW"] = "Mocha/vendor/GLFW/include"
+
+group "Dependencies"
+include "Mocha/vendor/GLFW"
+group ""
+
 group "Core"
 project "Mocha"
 	location "Mocha"
@@ -23,7 +31,7 @@ project "Mocha"
 	objdir("bin-int/" .. outputdir .. "/%{prj.name}")
 
 	pchheader "mcpch.h"
-	pchsource "Mocha/src/Mocha/mcpch.cpp"
+	pchsource "Mocha/src/mcpch.cpp"
 
 	files
 	{
@@ -34,7 +42,13 @@ project "Mocha"
 	includedirs
 	{
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links
+	{
+		"GLFW"
 	}
 
 	filter "system:windows"

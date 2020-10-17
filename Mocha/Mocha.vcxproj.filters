@@ -28,9 +28,12 @@
     <ClInclude Include="src\Mocha\Core\Ref.h">
       <Filter>Mocha\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\mcpch.h">
-      <Filter>Mocha</Filter>
-    </ClInclude>
+    <ClInclude Include="src\mcpch.h" />
+    <ClInclude Include="src\Mocha\Events\Event.h" />
+    <ClInclude Include="src\Mocha\Events\ApplicationEvent.h" />
+    <ClInclude Include="src\Mocha\Events\KeyEvent.h" />
+    <ClInclude Include="src\Mocha\Core\KeyCodes.h" />
+    <ClInclude Include="src\Mocha\Events\MouseEvent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Mocha\Core\Application.cpp">
@@ -39,8 +42,6 @@
     <ClCompile Include="src\Mocha\Core\Log.cpp">
       <Filter>Mocha\Core</Filter>
     </ClCompile>
-    <ClCompile Include="src\mcpch.cpp">
-      <Filter>Mocha</Filter>
-    </ClCompile>
+    <ClCompile Include="src\mcpch.cpp" />
   </ItemGroup>
 </Project>

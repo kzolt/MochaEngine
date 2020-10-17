@@ -9,6 +9,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{15A0C35D-0
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Mocha", "Mocha\Mocha.vcxproj", "{EDEFAE0D-5904-D7BE-2286-7A1E8E59D3EF}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dependencies", "Dependencies", "{53E47842-3FC8-3998-A828-34EB942B241A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GLFW", "Mocha\vendor\GLFW\GLFW.vcxproj", "{154B857C-0182-860D-AA6E-6C109684020F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -28,6 +32,12 @@ Global
 		{EDEFAE0D-5904-D7BE-2286-7A1E8E59D3EF}.Dist|x64.Build.0 = Dist|x64
 		{EDEFAE0D-5904-D7BE-2286-7A1E8E59D3EF}.Release|x64.ActiveCfg = Release|x64
 		{EDEFAE0D-5904-D7BE-2286-7A1E8E59D3EF}.Release|x64.Build.0 = Release|x64
+		{154B857C-0182-860D-AA6E-6C109684020F}.Debug|x64.ActiveCfg = Debug|x64
+		{154B857C-0182-860D-AA6E-6C109684020F}.Debug|x64.Build.0 = Debug|x64
+		{154B857C-0182-860D-AA6E-6C109684020F}.Dist|x64.ActiveCfg = Dist|x64
+		{154B857C-0182-860D-AA6E-6C109684020F}.Dist|x64.Build.0 = Dist|x64
+		{154B857C-0182-860D-AA6E-6C109684020F}.Release|x64.ActiveCfg = Release|x64
+		{154B857C-0182-860D-AA6E-6C109684020F}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -35,5 +45,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{1EE2310D-8AF6-59BE-5378-FD1DBF4B56EF} = {DD376B17-49ED-E30C-D2E1-DDE33E96DA10}
 		{EDEFAE0D-5904-D7BE-2286-7A1E8E59D3EF} = {15A0C35D-0158-05AB-6A5F-DE065636A09B}
+		{154B857C-0182-860D-AA6E-6C109684020F} = {53E47842-3FC8-3998-A828-34EB942B241A}
 	EndGlobalSection
 EndGlobal
