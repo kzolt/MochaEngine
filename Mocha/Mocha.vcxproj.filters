@@ -7,6 +7,15 @@
     <Filter Include="Mocha\Core">
       <UniqueIdentifier>{6510AC77-51C8-EDC4-BACF-C620A6A688B5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Mocha\Core\Events">
+      <UniqueIdentifier>{A9B8E8BC-15CF-E652-5E46-7274CA9BB7DA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mocha\Platform">
+      <UniqueIdentifier>{E1666288-CD34-568E-B6C8-C6B4A23532F3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mocha\Platform\Windows">
+      <UniqueIdentifier>{1B62D546-075C-FE98-F0C8-94A9DC616405}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Mocha.h" />
@@ -22,18 +31,34 @@
     <ClInclude Include="src\Mocha\Core\Entrypoint.h">
       <Filter>Mocha\Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\Mocha\Core\Events\ApplicationEvent.h">
+      <Filter>Mocha\Core\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mocha\Core\Events\Event.h">
+      <Filter>Mocha\Core\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mocha\Core\Events\KeyEvent.h">
+      <Filter>Mocha\Core\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mocha\Core\Events\MouseEvent.h">
+      <Filter>Mocha\Core\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mocha\Core\KeyCodes.h">
+      <Filter>Mocha\Core</Filter>
+    </ClInclude>
     <ClInclude Include="src\Mocha\Core\Log.h">
       <Filter>Mocha\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Mocha\Core\Ref.h">
       <Filter>Mocha\Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\Mocha\Core\Window.h">
+      <Filter>Mocha\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mocha\Platform\Windows\WindowsWindow.h">
+      <Filter>Mocha\Platform\Windows</Filter>
+    </ClInclude>
     <ClInclude Include="src\mcpch.h" />
-    <ClInclude Include="src\Mocha\Events\Event.h" />
-    <ClInclude Include="src\Mocha\Events\ApplicationEvent.h" />
-    <ClInclude Include="src\Mocha\Events\KeyEvent.h" />
-    <ClInclude Include="src\Mocha\Core\KeyCodes.h" />
-    <ClInclude Include="src\Mocha\Events\MouseEvent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Mocha\Core\Application.cpp">
@@ -41,6 +66,9 @@
     </ClCompile>
     <ClCompile Include="src\Mocha\Core\Log.cpp">
       <Filter>Mocha\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mocha\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Mocha\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\mcpch.cpp" />
   </ItemGroup>

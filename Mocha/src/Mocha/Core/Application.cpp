@@ -5,7 +5,7 @@ namespace Mocha {
 
 	Application::Application()
 	{
-
+		m_Window = Window::Create();
 	}
 
 	Application::~Application()
@@ -15,9 +15,10 @@ namespace Mocha {
 
 	void Application::Run()
 	{
-		while (true)
+		while (m_Running)
 		{
-
+			m_Window->ProcessEvent();
+			m_Window->SwapBuffers();
 		}
 	}
 

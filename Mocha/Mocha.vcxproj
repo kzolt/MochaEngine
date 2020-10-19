@@ -136,18 +136,21 @@
     <ClInclude Include="src\Mocha\Core\Assert.h" />
     <ClInclude Include="src\Mocha\Core\Base.h" />
     <ClInclude Include="src\Mocha\Core\Entrypoint.h" />
+    <ClInclude Include="src\Mocha\Core\Events\ApplicationEvent.h" />
+    <ClInclude Include="src\Mocha\Core\Events\Event.h" />
+    <ClInclude Include="src\Mocha\Core\Events\KeyEvent.h" />
+    <ClInclude Include="src\Mocha\Core\Events\MouseEvent.h" />
     <ClInclude Include="src\Mocha\Core\KeyCodes.h" />
     <ClInclude Include="src\Mocha\Core\Log.h" />
     <ClInclude Include="src\Mocha\Core\Ref.h" />
+    <ClInclude Include="src\Mocha\Core\Window.h" />
+    <ClInclude Include="src\Mocha\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\mcpch.h" />
-    <ClInclude Include="src\Mocha\Events\ApplicationEvent.h" />
-    <ClInclude Include="src\Mocha\Events\Event.h" />
-    <ClInclude Include="src\Mocha\Events\KeyEvent.h" />
-    <ClInclude Include="src\Mocha\Events\MouseEvent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Mocha\Core\Application.cpp" />
     <ClCompile Include="src\Mocha\Core\Log.cpp" />
+    <ClCompile Include="src\Mocha\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\mcpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>

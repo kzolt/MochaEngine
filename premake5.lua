@@ -89,14 +89,15 @@ project "Frapp"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+
 	}
 
 	includedirs
 	{
 		"Mocha/vendor/spdlog/include",
 		"Mocha/src",
-		"Mocha/vendor/"
+		"%{IncludeDir.GLFW}"
 	}
 
 	links

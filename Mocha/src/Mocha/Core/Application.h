@@ -1,5 +1,8 @@
 #pragma once
 
+#include "Mocha/Core/Base.h"
+#include "Mocha/Core/Window.h"
+
 namespace Mocha {
 	class Application
 	{
@@ -8,6 +11,10 @@ namespace Mocha {
 		virtual ~Application();
 
 		void Run();
+
+	private:
+		Ref<Window> m_Window;
+		bool m_Running = true;
 	};
 
 	// To be defined inside client

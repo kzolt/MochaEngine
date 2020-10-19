@@ -1,4 +1,5 @@
 #include <Mocha.h>
+#include <GLFW/glfw3.h>
 
 class Frapp : public Mocha::Application
 {

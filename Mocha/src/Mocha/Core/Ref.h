@@ -13,16 +13,18 @@ namespace Mocha {
 	public:
 		void IncRefCount() const 
 		{
-			m_RefCounted++;
+			m_RefCount++;
 		}
 
 		void DecRefCount() const
 		{
-			m_RefCounted--;
+			m_RefCount--;
 		}
 
+		uint32_t GetRefCount() const { return m_RefCount; }
+
 	private:
-		mutable uint32_t m_RefCounted = 0;
+		mutable uint32_t m_RefCount = 0;
 	};
 
 	//////////////////////////////////////////////////////////
@@ -143,6 +145,8 @@ namespace Mocha {
 		}
 
 	private:
+		template<class T2>
+		friend class Ref;
 
 		T* m_Instance;
 	};
