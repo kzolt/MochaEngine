@@ -4,14 +4,24 @@
     <Filter Include="Mocha">
       <UniqueIdentifier>{EDEFAE0D-5904-D7BE-2286-7A1E8E59D3EF}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Mocha\vendor">
+      <UniqueIdentifier>{AAB93189-961C-C12D-3FA2-F9E32BE48CB0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mocha\vendor\Vulkan">
+      <UniqueIdentifier>{EA03AE91-5665-8B9F-DFD2-D1514B33C25E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Mocha\src">
-      <Filter>Mocha</Filter>
+    <ClCompile Include="src\Application.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Mocha\vendor\Vulkan\include">
+      <Filter>Mocha\vendor\Vulkan</Filter>
     </None>
-    <None Include="..\Mocha\vendor">
-      <Filter>Mocha</Filter>
-    </None>
-    <None Include="src" />
   </ItemGroup>
 </Project>

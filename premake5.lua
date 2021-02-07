@@ -14,6 +14,11 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- Include directories relative to root folder (solution director)
 IncludeDir = {}
 IncludeDir["GLFW"] = "Mocha/vendor/GLFW/include"
+IncludeDir["Vulkan"] = "Mocha/vendor/Vulkan/include"
+IncludeDir["GLM"] = "Mocha/vendor/glm/include/"
+
+LibraryDir = {}
+LibraryDir["Vulkan"] = "vendor/Vulkan/lib/vulkan-1.lib"
 
 group "Dependencies"
 include "Mocha/vendor/GLFW"
@@ -43,12 +48,15 @@ project "Mocha"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Vulkan}",
+		"%{IncludeDir.GLM}"
 	}
 
 	links
 	{
-		"GLFW"
+		"GLFW",
+		"%{LibraryDir.Vulkan}"
 	}
 
 	filter "system:windows"
@@ -90,14 +98,15 @@ project "Frapp"
 	{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
-
+		"%{IncludeDir.Vulkan}"
 	}
 
 	includedirs
 	{
 		"Mocha/vendor/spdlog/include",
 		"Mocha/src",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.GLM}"
 	}
 
 	links

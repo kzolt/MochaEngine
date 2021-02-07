@@ -25,6 +25,8 @@ namespace Mocha {
 
 		inline virtual void* GetNativeWindow() const { return m_Window; }
 
+		virtual Ref<RendererContext> GetRenderContext() override { return m_RendererContext; }
+
 	private:
 		virtual void Init(const WindowProps& props);
 		virtual void Shutdown();
@@ -43,6 +45,8 @@ namespace Mocha {
 
 		WindowData m_Data;
 		float m_LastFrameTime = 0.0f;
+
+		Ref<RendererContext> m_RendererContext;
 	};
 
 }

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <memory>
-#include "Ref.h"
+#include "Mocha/Core/Ref.h"
 
 #define MC_EXPAND_VARGS(x) x
 
@@ -9,7 +9,8 @@
 
 #define MC_BIND_EVENT_FN(fn) std::bind(&##fn, this, std::placeholder::_1)
 
-#include "Assert.h"
+#include "Mocha/Core/Assert.h"
+#include "Mocha/Core/Log.h"
 
 namespace Mocha {
 

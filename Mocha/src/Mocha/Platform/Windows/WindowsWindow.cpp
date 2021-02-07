@@ -41,7 +41,8 @@ namespace Mocha {
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 
 		// Create Renderer Context
-
+		m_RendererContext = RendererContext::Create(m_Window);
+		m_RendererContext->Create();
 
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 
@@ -156,11 +157,12 @@ namespace Mocha {
 	void WindowsWindow::ProcessEvent()
 	{
 		glfwPollEvents();
+		glfwSetInputMode(m_Window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 	}
 
 	void WindowsWindow::SwapBuffers()
 	{
-
+		m_RendererContext->SwapBuffers();
 	}
 
 	void WindowsWindow::SetVSync(bool enabled)

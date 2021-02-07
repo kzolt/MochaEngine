@@ -6,6 +6,8 @@
 #include "Mocha/Core/Base.h"
 #include "Mocha/Core/Events/Event.h"
 
+#include "Mocha/Renderer/RendererContext.h"
+
 namespace Mocha {
 
 	struct WindowProps
@@ -39,6 +41,8 @@ namespace Mocha {
 		virtual bool IsVSync() const = 0;
 
 		virtual void* GetNativeWindow() const = 0;
+
+		virtual Ref<RendererContext> GetRenderContext() = 0;
 
 		static Window* Create(const WindowProps& = WindowProps());
 	};

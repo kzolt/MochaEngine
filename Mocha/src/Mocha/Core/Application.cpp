@@ -1,11 +1,23 @@
 #include "mcpch.h"
 #include "Application.h"
 
+#include "Mocha/Renderer/Framebuffer.h"
+
+#include <GLFW/glfw3.h>
+#include <Windows.h>
+
+#define BIND_EVENT_FN(fn) std::bind(&Application::##fn, this, std::placeholders::_1)
+
 namespace Mocha {
+
+	Application* Application::s_Instance = nullptr;
 
 	Application::Application()
 	{
-		m_Window = Window::Create();
+		s_Instance = this;
+
+		m_Window = std::unique_ptr<Window>(Window::Create());
+		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
 	}
 
 	Application::~Application()
@@ -15,11 +27,84 @@ namespace Mocha {
 
 	void Application::Run()
 	{
+		OnInit();
 		while (m_Running)
 		{
 			m_Window->ProcessEvent();
-			m_Window->SwapBuffers();
+			
+			if (!m_Minimized)
+			{
+				for (Layer* layer : m_LayerStack)
+					layer->OnUpdate(m_Timestep);
+
+				// TODO: Drawing
+
+				// On Render Thread
+				m_Window->GetRenderContext()->BeginFrame();
+				m_Window->SwapBuffers();
+			}
+
+			float time = GetTime();
+			m_Timestep = time - m_LastFrameTime;
+			m_LastFrameTime = time;
 		}
+		OnShutdown();
+	}
+
+	void Application::OnEvent(Event& event)
+	{
+		EventDispatcher dispacher(event);
+		dispacher.Dispatch<WindowResizeEvent>(BIND_EVENT_FN(OnWindowResize));
+		dispacher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
+
+		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); )
+		{
+			(*--it)->OnEvent(event);
+			if (event.Handled)
+				break;
+		}
+	}
+
+	void Application::PushLayer(Layer* layer)
+	{
+		m_LayerStack.PushLayer(layer);
+		layer->OnAttach();
+	}
+
+	void Application::PushOverlay(Layer* layer)
+	{
+		m_LayerStack.PushOverlay(layer);
+		layer->OnAttach();
+	}
+
+	bool Application::OnWindowResize(WindowResizeEvent& e)
+	{
+		int width = e.GetWidth(), height = e.GetHeight();
+		if (width == 0 || height == 0)
+		{
+			m_Minimized = true;
+			return false;
+		}
+		m_Minimized = false;
+
+		m_Window->GetRenderContext()->OnResize(width, height);
+
+		auto& fbs = FramebufferPool::GetGlobal()->GetAll();
+		for (auto& fb : fbs)
+			fb->Resize(width, height);
+
+		return false;
+	}
+
+	bool Application::OnWindowClose(WindowCloseEvent& e)
+	{
+		m_Running = false;
+		return true;
+	}
+
+	float Application::GetTime() const
+	{
+		return (float)glfwGetTime();
 	}
 
 }
