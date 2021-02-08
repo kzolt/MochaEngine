@@ -556,6 +556,7 @@ namespace Mocha {
 		imageViewCreateInfo.subresourceRange.levelCount = 1;
 		imageViewCreateInfo.subresourceRange.baseArrayLayer = 0;
 		imageViewCreateInfo.subresourceRange.aspectMask = VK_IMAGE_ASPECT_DEPTH_BIT;
+		imageViewCreateInfo.subresourceRange.layerCount = 1;
 		// Stencil aspect should only be set on depth + stencil formats
 		if (depthFormat >= VK_FORMAT_D16_UNORM_S8_UINT)
 			imageViewCreateInfo.subresourceRange.aspectMask |= VK_IMAGE_ASPECT_STENCIL_BIT;

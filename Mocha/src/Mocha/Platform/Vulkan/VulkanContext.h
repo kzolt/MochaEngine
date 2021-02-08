@@ -5,6 +5,8 @@
 
 #include "Vulkan.h"
 #include "VulkanDevice.h"
+#include "VulkanAllocator.h"
+#include "VulkanSwapchain.h"
 
 struct GLFWwindow;
 
@@ -24,13 +26,14 @@ namespace Mocha {
 		virtual void BeginFrame() override;
 
 		Ref<VulkanDevice> GetDevice() { return m_Device; }
+		VulkanSwapchain& GetSwapchain() { return m_Swapchain; }
 
 	public:
-
 		static VkInstance GetInstance() { return s_VulkanInstance; }
 
 		static Ref<VulkanContext> Get() { return Ref<VulkanContext>(Renderer::GetContext()); }
 		static Ref<VulkanDevice> GetCurrentDevice() { return Get()->GetDevice(); }
+
 	private:
 		GLFWwindow* m_WindowHandle;
 
@@ -41,7 +44,10 @@ namespace Mocha {
 		// Vulkan Instance
 		inline static VkInstance s_VulkanInstance;
 		VkDebugReportCallbackEXT m_DebugReportCallback = VK_NULL_HANDLE;
+		VkPipelineCache m_PipelineCache;
 
+		VulkanAllocator m_Allocator;
+		VulkanSwapchain m_Swapchain;
 	};
 
 }

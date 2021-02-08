@@ -3,44 +3,45 @@
 #include <stdint.h>
 
 namespace Mocha {
-	
-	//////////////////////////////////////////////////////////
-	// Ref Counting
-	//////////////////////////////////////////////////////////
 
 	class RefCounted
 	{
 	public:
-		void IncRefCount() const 
+		void IncRefCount() const
 		{
 			m_RefCount++;
 		}
-
 		void DecRefCount() const
 		{
 			m_RefCount--;
 		}
 
 		uint32_t GetRefCount() const { return m_RefCount; }
-
 	private:
-		mutable uint32_t m_RefCount = 0;
+		mutable uint32_t m_RefCount = 0; // TODO: atomic
 	};
-
-	//////////////////////////////////////////////////////////
-	// Ref Object
-	//////////////////////////////////////////////////////////
 
 	template<typename T>
 	class Ref
 	{
 	public:
 		Ref()
-			: m_Instance(nullptr) {}
+			: m_Instance(nullptr)
+		{
+		}
+
 		Ref(std::nullptr_t n)
-			: m_Instance(n) {}
+			: m_Instance(nullptr)
+		{
+		}
+
 		Ref(T* instance)
-			: m_Instance(instance) {}
+			: m_Instance(instance)
+		{
+			static_assert(std::is_base_of<RefCounted, T>::value, "Class is not RefCounted!");
+
+			IncRef();
+		}
 
 		template<typename T2>
 		Ref(const Ref<T2>& other)
@@ -112,8 +113,14 @@ namespace Mocha {
 		T& operator*() { return *m_Instance; }
 		const T& operator*() const { return *m_Instance; }
 
-		T* Raw() { return m_Instance; }
-		const T* Raw() const { return m_Instance; }
+		T* Raw() { return  m_Instance; }
+		const T* Raw() const { return  m_Instance; }
+
+		void Reset(T* instance = nullptr)
+		{
+			DecRef();
+			m_Instance = instance;
+		}
 
 		template<typename T2>
 		Ref<T2> As()
@@ -122,11 +129,10 @@ namespace Mocha {
 		}
 
 		template<typename... Args>
-		static Ref<T> Create(Args&&...args)
+		static Ref<T> Create(Args&&... args)
 		{
 			return Ref<T>(new T(std::forward<Args>(args)...));
 		}
-
 	private:
 		void IncRef() const
 		{
@@ -140,15 +146,17 @@ namespace Mocha {
 			{
 				m_Instance->DecRefCount();
 				if (m_Instance->GetRefCount() == 0)
+				{
 					delete m_Instance;
+				}
 			}
 		}
 
-	private:
 		template<class T2>
 		friend class Ref;
-
 		T* m_Instance;
 	};
+
+	// TODO: WeakRef
 
 }

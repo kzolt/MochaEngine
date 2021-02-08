@@ -7,6 +7,8 @@
 
 #include "Mocha/Core/Events/ApplicationEvent.h"
 
+#include "Mocha/ImGui/ImGuiLayer.h"
+
 namespace Mocha {
 
 	class Application
@@ -25,6 +27,7 @@ namespace Mocha {
 
 		void PushLayer(Layer* layer);
 		void PushOverlay(Layer* layer);
+		void RenderImGui();
 
 		bool OnWindowResize(WindowResizeEvent& e);
 		bool OnWindowClose(WindowCloseEvent& e);
@@ -40,6 +43,7 @@ namespace Mocha {
 		bool m_Running = true, m_Minimized = false;
 		
 		LayerStack m_LayerStack;
+		ImGuiLayer* m_ImGuiLayer;
 		Timestep m_Timestep;
 
 		float m_LastFrameTime = 0.0f;

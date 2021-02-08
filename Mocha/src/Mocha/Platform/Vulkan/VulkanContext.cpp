@@ -108,21 +108,40 @@ namespace Mocha {
 			debugCreateInfo.pUserData = NULL;
 			VK_CHECK_RESULT(vkCreateDebugReportCallbackEXT(s_VulkanInstance, &debugCreateInfo, nullptr, &m_DebugReportCallback));
 		}
-	}
 
-	void VulkanContext::SwapBuffers()
-	{
+		m_PhysicalDevice = VulkanPhysicalDevice::Select();
 
+		VkPhysicalDeviceFeatures enabledFeatures;
+		memset(&enabledFeatures, 0, sizeof(VkPhysicalDeviceFeatures));
+		enabledFeatures.samplerAnisotropy = true;
+		m_Device = Ref<VulkanDevice>::Create(m_PhysicalDevice, enabledFeatures);
+
+		m_Allocator = VulkanAllocator(m_Device, "Default");
+
+		m_Swapchain.Init(s_VulkanInstance, m_Device);
+		m_Swapchain.InitSurface(m_WindowHandle);
+		
+		uint32_t width = 1280, height = 720;
+		m_Swapchain.Create(&width, &height);
+
+		VkPipelineCacheCreateInfo pipelineCacheCreateInfo{};
+		pipelineCacheCreateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_CACHE_CREATE_INFO;
+		VK_CHECK_RESULT(vkCreatePipelineCache(m_Device->GetVulkanDevice(), &pipelineCacheCreateInfo, nullptr, &m_PipelineCache));
 	}
 
 	void VulkanContext::OnResize(uint32_t width, uint32_t height)
 	{
-
+		m_Swapchain.OnResize(width, height);
 	}
 
 	void VulkanContext::BeginFrame()
 	{
+		m_Swapchain.BeginFrame();
+	}
 
+	void VulkanContext::SwapBuffers()
+	{
+		m_Swapchain.Present();
 	}
 
 }

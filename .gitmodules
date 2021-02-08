@@ -4,3 +4,6 @@
 [submodule "Mocha/vendor/GLFW"]
 	path = Mocha/vendor/GLFW
 	url = https://github.com/TheCherno/glfw.git
+[submodule "Mocha/Vendor/imgui"]
+	path = Mocha/Vendor/imgui
+	url = https://github.com/TheCherno/imgui

@@ -1,183 +1,267 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Mocha">
-      <UniqueIdentifier>{EDEFAE0D-5904-D7BE-2286-7A1E8E59D3EF}</UniqueIdentifier>
+    <Filter Include="src">
+      <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Mocha\Core">
-      <UniqueIdentifier>{6510AC77-51C8-EDC4-BACF-C620A6A688B5}</UniqueIdentifier>
+    <Filter Include="src\Mocha">
+      <UniqueIdentifier>{44FE6BB3-B068-202A-F9A6-D1CF6550FE7E}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Mocha\Core\Events">
-      <UniqueIdentifier>{A9B8E8BC-15CF-E652-5E46-7274CA9BB7DA}</UniqueIdentifier>
+    <Filter Include="src\Mocha\Core">
+      <UniqueIdentifier>{1CADB2AE-087B-A6B4-F10E-17DBDD7B8219}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Mocha\Platform">
-      <UniqueIdentifier>{E1666288-CD34-568E-B6C8-C6B4A23532F3}</UniqueIdentifier>
+    <Filter Include="src\Mocha\Core\Events">
+      <UniqueIdentifier>{8001F711-EC6D-B20C-B561-4A6A218DD474}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Mocha\Platform\Vulkan">
-      <UniqueIdentifier>{41CDDED9-AD39-9AD4-762D-3232E258BC3C}</UniqueIdentifier>
+    <Filter Include="src\Mocha\ImGui">
+      <UniqueIdentifier>{6E167385-DAA1-E049-E3B2-633E4FBD3C4A}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Mocha\Platform\Windows">
-      <UniqueIdentifier>{1B62D546-075C-FE98-F0C8-94A9DC616405}</UniqueIdentifier>
+    <Filter Include="src\Mocha\Platform">
+      <UniqueIdentifier>{188746E6-046B-073C-6DCB-018F59CEF1BD}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Mocha\Renderer">
-      <UniqueIdentifier>{336E3F63-1F3C-3369-08D0-A38FF43C0FCE}</UniqueIdentifier>
+    <Filter Include="src\Mocha\Platform\Vulkan">
+      <UniqueIdentifier>{98A9032C-046C-37B6-4D1C-C642B91D1094}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Mocha\Platform\Windows">
+      <UniqueIdentifier>{52C995DD-3ED9-41AE-A792-A6CC93C13047}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Mocha\Renderer">
+      <UniqueIdentifier>{6A8E23C1-5672-E416-BFD2-DE69ABD5CE98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor">
+      <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\ImGui">
+      <UniqueIdentifier>{1DA38CEE-0906-1C93-B28B-54499ECDE715}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\ImGui\examples">
+      <UniqueIdentifier>{6BC1FCD3-D72D-B8CE-A021-502C0C4DDA36}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Mocha.h" />
+    <ClInclude Include="src\Mocha.h">
+      <Filter>src</Filter>
+    </ClInclude>
     <ClInclude Include="src\Mocha\Core\Application.h">
-      <Filter>Mocha\Core</Filter>
+      <Filter>src\Mocha\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Mocha\Core\Assert.h">
-      <Filter>Mocha\Core</Filter>
+      <Filter>src\Mocha\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Mocha\Core\Base.h">
-      <Filter>Mocha\Core</Filter>
+      <Filter>src\Mocha\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Mocha\Core\Buffer.h">
-      <Filter>Mocha\Core</Filter>
+      <Filter>src\Mocha\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Mocha\Core\Entrypoint.h">
-      <Filter>Mocha\Core</Filter>
+      <Filter>src\Mocha\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Mocha\Core\Events\ApplicationEvent.h">
-      <Filter>Mocha\Core\Events</Filter>
+      <Filter>src\Mocha\Core\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Mocha\Core\Events\Event.h">
-      <Filter>Mocha\Core\Events</Filter>
+      <Filter>src\Mocha\Core\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Mocha\Core\Events\KeyEvent.h">
-      <Filter>Mocha\Core\Events</Filter>
+      <Filter>src\Mocha\Core\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Mocha\Core\Events\MouseEvent.h">
-      <Filter>Mocha\Core\Events</Filter>
+      <Filter>src\Mocha\Core\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Mocha\Core\KeyCodes.h">
-      <Filter>Mocha\Core</Filter>
+      <Filter>src\Mocha\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mocha\Core\Layer.h">
+      <Filter>src\Mocha\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mocha\Core\LayerStack.h">
+      <Filter>src\Mocha\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Mocha\Core\Log.h">
-      <Filter>Mocha\Core</Filter>
+      <Filter>src\Mocha\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Mocha\Core\Ref.h">
-      <Filter>Mocha\Core</Filter>
+      <Filter>src\Mocha\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mocha\Core\Timestep.h">
+      <Filter>src\Mocha\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Mocha\Core\Window.h">
-      <Filter>Mocha\Core</Filter>
+      <Filter>src\Mocha\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mocha\ImGui\ImGuiLayer.h">
+      <Filter>src\Mocha\ImGui</Filter>
     </ClInclude>
     <ClInclude Include="src\Mocha\Platform\Vulkan\Vulkan.h">
-      <Filter>Mocha\Platform\Vulkan</Filter>
+      <Filter>src\Mocha\Platform\Vulkan</Filter>
     </ClInclude>
     <ClInclude Include="src\Mocha\Platform\Vulkan\VulkanAllocator.h">
-      <Filter>Mocha\Platform\Vulkan</Filter>
+      <Filter>src\Mocha\Platform\Vulkan</Filter>
     </ClInclude>
     <ClInclude Include="src\Mocha\Platform\Vulkan\VulkanContext.h">
-      <Filter>Mocha\Platform\Vulkan</Filter>
+      <Filter>src\Mocha\Platform\Vulkan</Filter>
     </ClInclude>
     <ClInclude Include="src\Mocha\Platform\Vulkan\VulkanDevice.h">
-      <Filter>Mocha\Platform\Vulkan</Filter>
+      <Filter>src\Mocha\Platform\Vulkan</Filter>
     </ClInclude>
     <ClInclude Include="src\Mocha\Platform\Vulkan\VulkanFramebuffer.h">
-      <Filter>Mocha\Platform\Vulkan</Filter>
+      <Filter>src\Mocha\Platform\Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mocha\Platform\Vulkan\VulkanImGuiLayer.h">
+      <Filter>src\Mocha\Platform\Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mocha\Platform\Vulkan\VulkanIndexBuffer.h">
+      <Filter>src\Mocha\Platform\Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mocha\Platform\Vulkan\VulkanPipeline.h">
+      <Filter>src\Mocha\Platform\Vulkan</Filter>
     </ClInclude>
     <ClInclude Include="src\Mocha\Platform\Vulkan\VulkanRenderPass.h">
-      <Filter>Mocha\Platform\Vulkan</Filter>
+      <Filter>src\Mocha\Platform\Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mocha\Platform\Vulkan\VulkanRenderer.h">
+      <Filter>src\Mocha\Platform\Vulkan</Filter>
     </ClInclude>
     <ClInclude Include="src\Mocha\Platform\Vulkan\VulkanShader.h">
-      <Filter>Mocha\Platform\Vulkan</Filter>
+      <Filter>src\Mocha\Platform\Vulkan</Filter>
     </ClInclude>
     <ClInclude Include="src\Mocha\Platform\Vulkan\VulkanSwapchain.h">
-      <Filter>Mocha\Platform\Vulkan</Filter>
+      <Filter>src\Mocha\Platform\Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mocha\Platform\Vulkan\VulkanVertexBuffer.h">
+      <Filter>src\Mocha\Platform\Vulkan</Filter>
     </ClInclude>
     <ClInclude Include="src\Mocha\Platform\Windows\WindowsWindow.h">
-      <Filter>Mocha\Platform\Windows</Filter>
+      <Filter>src\Mocha\Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\Mocha\Renderer\Framebuffer.h">
-      <Filter>Mocha\Renderer</Filter>
+      <Filter>src\Mocha\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mocha\Renderer\IndexBuffer.h">
+      <Filter>src\Mocha\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mocha\Renderer\Pipeline.h">
+      <Filter>src\Mocha\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Mocha\Renderer\RenderPass.h">
-      <Filter>Mocha\Renderer</Filter>
+      <Filter>src\Mocha\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Mocha\Renderer\Renderer.h">
-      <Filter>Mocha\Renderer</Filter>
+      <Filter>src\Mocha\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Mocha\Renderer\RendererAPI.h">
-      <Filter>Mocha\Renderer</Filter>
+      <Filter>src\Mocha\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Mocha\Renderer\RendererContext.h">
-      <Filter>Mocha\Renderer</Filter>
+      <Filter>src\Mocha\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Mocha\Renderer\Shader.h">
-      <Filter>Mocha\Renderer</Filter>
+      <Filter>src\Mocha\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Mocha\Renderer\ShaderUniform.h">
-      <Filter>Mocha\Renderer</Filter>
+      <Filter>src\Mocha\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\mcpch.h" />
-    <ClInclude Include="src\Mocha\Renderer\Pipeline.h" />
-    <ClInclude Include="src\Mocha\Renderer\VertexBuffer.h" />
-    <ClInclude Include="src\Mocha\Platform\Vulkan\VulkanPipeline.h" />
-    <ClInclude Include="src\Mocha\Platform\Vulkan\VulkanVertexBuffer.h" />
-    <ClInclude Include="src\Mocha\Renderer\IndexBuffer.h" />
-    <ClInclude Include="src\Mocha\Platform\Vulkan\VulkanIndexBuffer.h" />
-    <ClInclude Include="src\Mocha\Core\Layer.h" />
-    <ClInclude Include="src\Mocha\Core\Timestep.h" />
-    <ClInclude Include="src\Mocha\Core\LayerStack.h" />
-    <ClInclude Include="src\Mocha\Platform\Vulkan\VulkanRenderer.h" />
+    <ClInclude Include="src\Mocha\Renderer\VertexBuffer.h">
+      <Filter>src\Mocha\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\mcpch.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Mocha\Core\Application.cpp">
-      <Filter>Mocha\Core</Filter>
+      <Filter>src\Mocha\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mocha\Core\Layer.cpp">
+      <Filter>src\Mocha\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mocha\Core\LayerStack.cpp">
+      <Filter>src\Mocha\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Mocha\Core\Log.cpp">
-      <Filter>Mocha\Core</Filter>
+      <Filter>src\Mocha\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mocha\Core\Timestep.cpp">
+      <Filter>src\Mocha\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mocha\ImGui\ImGuiBuild.cpp">
+      <Filter>src\Mocha\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mocha\ImGui\ImGuiLayer.cpp">
+      <Filter>src\Mocha\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\Mocha\Platform\Vulkan\VulkanAllocator.cpp">
-      <Filter>Mocha\Platform\Vulkan</Filter>
+      <Filter>src\Mocha\Platform\Vulkan</Filter>
     </ClCompile>
     <ClCompile Include="src\Mocha\Platform\Vulkan\VulkanContext.cpp">
-      <Filter>Mocha\Platform\Vulkan</Filter>
+      <Filter>src\Mocha\Platform\Vulkan</Filter>
     </ClCompile>
     <ClCompile Include="src\Mocha\Platform\Vulkan\VulkanDevice.cpp">
-      <Filter>Mocha\Platform\Vulkan</Filter>
+      <Filter>src\Mocha\Platform\Vulkan</Filter>
     </ClCompile>
     <ClCompile Include="src\Mocha\Platform\Vulkan\VulkanFramebuffer.cpp">
-      <Filter>Mocha\Platform\Vulkan</Filter>
+      <Filter>src\Mocha\Platform\Vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mocha\Platform\Vulkan\VulkanImGuiLayer.cpp">
+      <Filter>src\Mocha\Platform\Vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mocha\Platform\Vulkan\VulkanIndexBuffer.cpp">
+      <Filter>src\Mocha\Platform\Vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mocha\Platform\Vulkan\VulkanPipeline.cpp">
+      <Filter>src\Mocha\Platform\Vulkan</Filter>
     </ClCompile>
     <ClCompile Include="src\Mocha\Platform\Vulkan\VulkanRenderPass.cpp">
-      <Filter>Mocha\Platform\Vulkan</Filter>
+      <Filter>src\Mocha\Platform\Vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mocha\Platform\Vulkan\VulkanRenderer.cpp">
+      <Filter>src\Mocha\Platform\Vulkan</Filter>
     </ClCompile>
     <ClCompile Include="src\Mocha\Platform\Vulkan\VulkanShader.cpp">
-      <Filter>Mocha\Platform\Vulkan</Filter>
+      <Filter>src\Mocha\Platform\Vulkan</Filter>
     </ClCompile>
     <ClCompile Include="src\Mocha\Platform\Vulkan\VulkanSwapchain.cpp">
-      <Filter>Mocha\Platform\Vulkan</Filter>
+      <Filter>src\Mocha\Platform\Vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mocha\Platform\Vulkan\VulkanVertexBuffer.cpp">
+      <Filter>src\Mocha\Platform\Vulkan</Filter>
     </ClCompile>
     <ClCompile Include="src\Mocha\Platform\Windows\WindowsWindow.cpp">
-      <Filter>Mocha\Platform\Windows</Filter>
+      <Filter>src\Mocha\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\Mocha\Renderer\Framebuffer.cpp">
-      <Filter>Mocha\Renderer</Filter>
+      <Filter>src\Mocha\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mocha\Renderer\IndexBuffer.cpp">
+      <Filter>src\Mocha\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mocha\Renderer\Pipeline.cpp">
+      <Filter>src\Mocha\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Mocha\Renderer\RenderPass.cpp">
-      <Filter>Mocha\Renderer</Filter>
+      <Filter>src\Mocha\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mocha\Renderer\RendererAPI.cpp">
+      <Filter>src\Mocha\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Mocha\Renderer\RendererContext.cpp">
-      <Filter>Mocha\Renderer</Filter>
+      <Filter>src\Mocha\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Mocha\Renderer\Shader.cpp">
-      <Filter>Mocha\Renderer</Filter>
+      <Filter>src\Mocha\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="src\mcpch.cpp" />
-    <ClCompile Include="src\Mocha\Platform\Vulkan\VulkanPipeline.cpp" />
-    <ClCompile Include="src\Mocha\Renderer\Pipeline.cpp" />
-    <ClCompile Include="src\Mocha\Renderer\VertexBuffer.cpp" />
-    <ClCompile Include="src\Mocha\Platform\Vulkan\VulkanVertexBuffer.cpp" />
-    <ClCompile Include="src\Mocha\Renderer\IndexBuffer.cpp" />
-    <ClCompile Include="src\Mocha\Platform\Vulkan\VulkanIndexBuffer.cpp" />
-    <ClCompile Include="src\Mocha\Renderer\RendererAPI.cpp" />
-    <ClCompile Include="src\Mocha\Core\Timestep.cpp" />
-    <ClCompile Include="src\Mocha\Core\Layer.cpp" />
-    <ClCompile Include="src\Mocha\Core\LayerStack.cpp" />
-    <ClCompile Include="src\Mocha\Platform\Vulkan\VulkanRenderer.cpp" />
+    <ClCompile Include="src\Mocha\Renderer\VertexBuffer.cpp">
+      <Filter>src\Mocha\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mcpch.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\ImGui\examples\imgui_impl_glfw.cpp">
+      <Filter>vendor\ImGui\examples</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\ImGui\examples\imgui_impl_vulkan.cpp">
+      <Filter>vendor\ImGui\examples</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

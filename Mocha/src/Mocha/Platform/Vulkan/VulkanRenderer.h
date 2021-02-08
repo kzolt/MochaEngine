@@ -9,8 +9,9 @@ namespace Mocha {
 		static void Submit();
 
 		static void OnResize();
-		static void OnInit();
+		static void Init();
 		static void Draw();
+		static void DrawImGui();
 	};
 
 }

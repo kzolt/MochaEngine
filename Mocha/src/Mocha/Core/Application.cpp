@@ -3,8 +3,12 @@
 
 #include "Mocha/Renderer/Framebuffer.h"
 
+#include <imgui.h>
+
 #include <GLFW/glfw3.h>
 #include <Windows.h>
+
+#include "Mocha/Platform/Vulkan/VulkanRenderer.h"
 
 #define BIND_EVENT_FN(fn) std::bind(&Application::##fn, this, std::placeholders::_1)
 
@@ -18,6 +22,12 @@ namespace Mocha {
 
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
+		m_Window->SetVSync(true);
+
+		m_ImGuiLayer = ImGuiLayer::Create();
+		PushOverlay(m_ImGuiLayer);
+
+		VulkanRenderer::Init();
 	}
 
 	Application::~Application()
@@ -38,6 +48,9 @@ namespace Mocha {
 					layer->OnUpdate(m_Timestep);
 
 				// TODO: Drawing
+				RenderImGui();
+				VulkanRenderer::DrawImGui();
+				m_ImGuiLayer->End();
 
 				// On Render Thread
 				m_Window->GetRenderContext()->BeginFrame();
@@ -63,6 +76,17 @@ namespace Mocha {
 			if (event.Handled)
 				break;
 		}
+	}
+
+	void Application::RenderImGui()
+	{
+		m_ImGuiLayer->Begin();
+		ImGui::Begin("Renderer");
+		ImGui::Text("Hello, World!");
+		ImGui::End();
+
+		for (Layer* layer : m_LayerStack)
+			layer->OnImGuiRender();
 	}
 
 	void Application::PushLayer(Layer* layer)

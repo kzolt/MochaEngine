@@ -16,12 +16,14 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "Mocha/vendor/GLFW/include"
 IncludeDir["Vulkan"] = "Mocha/vendor/Vulkan/include"
 IncludeDir["GLM"] = "Mocha/vendor/glm/include/"
+IncludeDir["ImGui"] = "Mocha/vendor/ImGui"
 
 LibraryDir = {}
 LibraryDir["Vulkan"] = "vendor/Vulkan/lib/vulkan-1.lib"
 
 group "Dependencies"
 include "Mocha/vendor/GLFW"
+include "Mocha/vendor/ImGui"
 group ""
 
 group "Core"
@@ -41,7 +43,10 @@ project "Mocha"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+
+		"%{IncludeDir.ImGui}/examples/imgui_impl_vulkan.cpp",
+        "%{IncludeDir.ImGui}/examples/imgui_impl_glfw.cpp"
 	}
 
 	includedirs
@@ -50,12 +55,14 @@ project "Mocha"
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Vulkan}",
-		"%{IncludeDir.GLM}"
+		"%{IncludeDir.GLM}",
+		"%{IncludeDir.ImGui}"
 	}
 
 	links
 	{
 		"GLFW",
+		"ImGui",
 		"%{LibraryDir.Vulkan}"
 	}
 
