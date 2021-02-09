@@ -7,3 +7,6 @@
 [submodule "Mocha/Vendor/imgui"]
 	path = Mocha/Vendor/imgui
 	url = https://github.com/TheCherno/imgui
+[submodule "Mocha/Vendor/SPIRV-Cross"]
+	path = Mocha/Vendor/SPIRV-Cross
+	url = https://github.com/KhronosGroup/SPIRV-Cross
