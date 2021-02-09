@@ -82,7 +82,11 @@ namespace Mocha {
 	{
 		m_ImGuiLayer->Begin();
 		ImGui::Begin("Renderer");
-		ImGui::Text("Hello, World!");
+		auto& caps = RendererAPI::GetCapabilities();
+		ImGui::Text("Vendor: %s", caps.Vendor.c_str());
+		ImGui::Text("Renderer: %s", caps.Renderer.c_str());
+		ImGui::Text("Version: %s", caps.Version.c_str());
+		ImGui::Text("Frame Time: %.fms\n", m_Timestep.GetMilliseconds());
 		ImGui::End();
 
 		for (Layer* layer : m_LayerStack)

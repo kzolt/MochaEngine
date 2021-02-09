@@ -80,6 +80,8 @@ namespace Mocha {
 
 	}
 
+	// TODO: Combine Draw Commands
+
 	void VulkanRenderer::Draw()
 	{
 		Ref<VulkanContext> context = VulkanContext::Get();
@@ -143,7 +145,12 @@ namespace Mocha {
 		Ref<VulkanContext> context = VulkanContext::Get();
 		VulkanSwapchain& swapchain = context->GetSwapchain();
 
+		VkCommandBufferBeginInfo cmdBufInfo{};
+		cmdBufInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO;
+		cmdBufInfo.pNext = nullptr;
+
 		VkCommandBuffer drawCommandBuffer = swapchain.GetCurrentDrawCommandBuffer();
+		VK_CHECK_RESULT(vkBeginCommandBuffer(drawCommandBuffer, &cmdBufInfo));
 
 		VkClearValue clearValues[2];
 		clearValues[0].color = { {0.1f, 0.1f, 0.1f, 1.0f} };
@@ -188,9 +195,9 @@ namespace Mocha {
 				// Update dynamic viewport state
 				VkViewport viewport{};
 				viewport.x = 0.0f;
-				viewport.y = 0.0f;
+				viewport.y = (float)height;
 				viewport.width = (float)width;
-				viewport.height = (float)height;
+				viewport.height = -(float)height;
 				viewport.minDepth = 0.0f;
 				viewport.maxDepth = 1.0f;
 				vkCmdSetViewport(s_ImGuiCommandBuffer, 0, 1, &viewport);
@@ -204,6 +211,7 @@ namespace Mocha {
 				vkCmdSetScissor(s_ImGuiCommandBuffer, 0, 1, &scissor);
 
 				ImGui::Render();
+
 				ImDrawData* main_draw_data = ImGui::GetDrawData();
 				ImGui_ImplVulkan_RenderDrawData(main_draw_data, s_ImGuiCommandBuffer);
 

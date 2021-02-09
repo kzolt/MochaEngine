@@ -1,5 +1,6 @@
 #include <Mocha.h>
-#include <GLFW/glfw3.h>
+#include <Mocha/Core/Entrypoint.h>
+#include "EditorLayer.h"
 
 class Frapp : public Mocha::Application
 {
@@ -14,8 +15,10 @@ public:
 
 	}
 
-private:
-
+	virtual void OnInit() override
+	{
+		PushLayer(new Mocha::EditorLayer());
+	}
 };
 
 Mocha::Application* Mocha::CreateApplication()

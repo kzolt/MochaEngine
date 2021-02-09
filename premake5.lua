@@ -17,6 +17,7 @@ IncludeDir["GLFW"] = "Mocha/vendor/GLFW/include"
 IncludeDir["Vulkan"] = "Mocha/vendor/Vulkan/include"
 IncludeDir["GLM"] = "Mocha/vendor/glm/include/"
 IncludeDir["ImGui"] = "Mocha/vendor/ImGui"
+IncludeDir["STB"] = "Mocha/vendor/stb/include"
 
 LibraryDir = {}
 LibraryDir["Vulkan"] = "vendor/Vulkan/lib/vulkan-1.lib"
@@ -46,7 +47,9 @@ project "Mocha"
 		"%{prj.name}/src/**.cpp",
 
 		"%{IncludeDir.ImGui}/examples/imgui_impl_vulkan.cpp",
-        "%{IncludeDir.ImGui}/examples/imgui_impl_glfw.cpp"
+        "%{IncludeDir.ImGui}/examples/imgui_impl_glfw.cpp",
+
+		"Mocha/Vendor/stb/stb_image.cpp"
 	}
 
 	includedirs
@@ -56,7 +59,8 @@ project "Mocha"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Vulkan}",
 		"%{IncludeDir.GLM}",
-		"%{IncludeDir.ImGui}"
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.STB}"
 	}
 
 	links
@@ -112,6 +116,7 @@ project "Frapp"
 	{
 		"Mocha/vendor/spdlog/include",
 		"Mocha/src",
+		"Mocha/vendor",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.GLM}"
 	}

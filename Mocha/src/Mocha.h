@@ -12,8 +12,3 @@
 #ifdef MC_PLATFORM_WINDOWS
 	#include "Mocha/Platform/Windows/WindowsWindow.h"
 #endif
-
-//////////////////////////////////////////////////
-// Entry Point
-//////////////////////////////////////////////////
-#include "Mocha/Core/Entrypoint.h"
