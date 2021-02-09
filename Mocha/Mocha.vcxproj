@@ -88,7 +88,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>vendor\Vulkan\lib\vulkan-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>vendor\Vulkan\lib\vulkan-1.lib;vendor\shaderc\lib\Debug\shaderc.lib;vendor\shaderc\lib\Debug\shaderc_util.lib;vendor\glslang\lib\Debug\glslangd.lib;vendor\glslang\lib\Debug\MachineIndependentd.lib;vendor\glslang\lib\Debug\SPIRVd.lib;vendor\glslang\lib\Debug\OGLCompilerd.lib;vendor\glslang\lib\Debug\OSDependentd.lib;vendor\glslang\lib\Debug\GenericCodeGend.lib;vendor\SPIRV-Tools\lib\Debug\SPIRV-Tools.lib;vendor\SPIRV-Tools\lib\Debug\SPIRV-Tools-opt.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -112,7 +112,7 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <Lib>
-      <AdditionalDependencies>vendor\Vulkan\lib\vulkan-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>vendor\Vulkan\lib\vulkan-1.lib;vendor\shaderc\lib\Debug\shaderc.lib;vendor\shaderc\lib\Debug\shaderc_util.lib;vendor\glslang\lib\Debug\glslangd.lib;vendor\glslang\lib\Debug\MachineIndependentd.lib;vendor\glslang\lib\Debug\SPIRVd.lib;vendor\glslang\lib\Debug\OGLCompilerd.lib;vendor\glslang\lib\Debug\OSDependentd.lib;vendor\glslang\lib\Debug\GenericCodeGend.lib;vendor\SPIRV-Tools\lib\Debug\SPIRV-Tools.lib;vendor\SPIRV-Tools\lib\Debug\SPIRV-Tools-opt.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
@@ -136,7 +136,7 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <Lib>
-      <AdditionalDependencies>vendor\Vulkan\lib\vulkan-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>vendor\Vulkan\lib\vulkan-1.lib;vendor\shaderc\lib\Debug\shaderc.lib;vendor\shaderc\lib\Debug\shaderc_util.lib;vendor\glslang\lib\Debug\glslangd.lib;vendor\glslang\lib\Debug\MachineIndependentd.lib;vendor\glslang\lib\Debug\SPIRVd.lib;vendor\glslang\lib\Debug\OGLCompilerd.lib;vendor\glslang\lib\Debug\OSDependentd.lib;vendor\glslang\lib\Debug\GenericCodeGend.lib;vendor\SPIRV-Tools\lib\Debug\SPIRV-Tools.lib;vendor\SPIRV-Tools\lib\Debug\SPIRV-Tools-opt.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -230,6 +230,9 @@
     </ProjectReference>
     <ProjectReference Include="vendor\ImGui\ImGui.vcxproj">
       <Project>{C0FF640D-2C14-8DBE-F595-301E616989EF}</Project>
+    </ProjectReference>
+    <ProjectReference Include="vendor\SPIRV-Cross\SPIRV-Cross.vcxproj">
+      <Project>{30B15D9A-9C66-D68F-255B-D066910FCD93}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

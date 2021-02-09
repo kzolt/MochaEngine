@@ -121,6 +121,19 @@ namespace Mocha {
 		ImGui::Text("AHHHHHHHHHHHHHHHHHHHHH");
 		ImGui::End();
 
+		if (ImGui::BeginMenuBar())
+		{
+			if (ImGui::BeginMenu("File"))
+			{
+				if (ImGui::MenuItem("Exit"))
+					MC_INFO("Exiting!");
+
+				ImGui::EndMenu();
+			}
+
+			ImGui::EndMenuBar();
+		}
+
 		ImGui::End();
 	}
 

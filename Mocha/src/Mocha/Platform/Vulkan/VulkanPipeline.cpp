@@ -59,8 +59,8 @@ namespace Mocha {
 		VkPipelineLayoutCreateInfo pPipelineLayoutCreateInfo{};
 		pPipelineLayoutCreateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;
 		pPipelineLayoutCreateInfo.pNext = nullptr;
-		pPipelineLayoutCreateInfo.setLayoutCount = 1;
-		pPipelineLayoutCreateInfo.pSetLayouts = &descriptorSetLayout;
+		pPipelineLayoutCreateInfo.setLayoutCount = 0;
+		pPipelineLayoutCreateInfo.pSetLayouts = 0; //TODO: &descriptorSetLayout
 		pPipelineLayoutCreateInfo.pushConstantRangeCount = vulkanPushConstantRanges.size();
 		pPipelineLayoutCreateInfo.pPushConstantRanges = vulkanPushConstantRanges.data();
 
@@ -199,6 +199,8 @@ namespace Mocha {
 		pipelineCacheCreateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_CACHE_CREATE_INFO;
 		VkPipelineCache pipelineCache;
 		VK_CHECK_RESULT(vkCreatePipelineCache(device, &pipelineCacheCreateInfo, nullptr, &pipelineCache));
+
+		MC_CORE_TRACE(shaderStages[0].sType);
 
 		// Create rendering pipeline using the specified states
 		VK_CHECK_RESULT(vkCreateGraphicsPipelines(device, pipelineCache, 1, &pipelineCreateInfo, nullptr, &m_VulkanPipeline));

@@ -88,21 +88,20 @@ namespace Mocha {
 
 	void VulkanShader::Reload()
 	{
-		Ref<VulkanShader> instance = this;
-		std::string source = ReadShaderFromFile(instance->m_AssetPath);
+		std::string source = ReadShaderFromFile(m_AssetPath);
 
-		instance->m_ShaderSource = instance->PreProcess(source);
-		instance->m_ShaderStages.resize(2);
+		m_ShaderSource = PreProcess(source);
+		m_ShaderStages.resize(2);
 
 		std::array<std::vector<uint32_t>, 2> shaderData;
-		instance->CommpileOrGetVulkanBinary(shaderData, false);
-		instance->LoadAndCreateVertexShader(instance->m_ShaderStages[0], shaderData[0]);
-		instance->LoadAndCreateFragmentShader(instance->m_ShaderStages[1], shaderData[1]);
+		CommpileOrGetVulkanBinary(shaderData, false);
+		LoadAndCreateVertexShader(m_ShaderStages[0], shaderData[0]);
+		LoadAndCreateFragmentShader(m_ShaderStages[1], shaderData[1]);
 
-		instance->Reflect(VK_SHADER_STAGE_VERTEX_BIT, shaderData[0]);
-		instance->Reflect(VK_SHADER_STAGE_FRAGMENT_BIT, shaderData[1]);
+		Reflect(VK_SHADER_STAGE_VERTEX_BIT, shaderData[0]);
+		Reflect(VK_SHADER_STAGE_FRAGMENT_BIT, shaderData[1]);
 
-		instance->CreateDescriptors();
+		CreateDescriptors();
 
 	}
 
@@ -318,7 +317,7 @@ namespace Mocha {
 
 			{
 				std::filesystem::path p = m_AssetPath;
-				auto path = p.parent_path() / "cached" / (p.filename().string() + ".cached_vulkan.vert");
+				auto path = p.parent_path() / "cached" / (p.filename().string() + ".cached_vulkan.frag");
 				std::string cachedFilePath = path.string();
 
 				FILE* f = fopen(cachedFilePath.c_str(), "wb");
@@ -406,62 +405,62 @@ namespace Mocha {
 		}
 
 		MC_CORE_TRACE("Push Constant Buffers:");
-for (const auto& resource : resources.push_constant_buffers)
-{
-	const auto& bufferName = resource.name;
-	auto& bufferType = compiler.get_type(resource.base_type_id);
-	auto bufferSize = compiler.get_declared_struct_size(bufferType);
-	int memberCount = bufferType.member_types.size();
-	uint32_t size = compiler.get_declared_struct_size(bufferType);
-	uint32_t offset = 0;
+		for (const auto& resource : resources.push_constant_buffers)
+		{
+			const auto& bufferName = resource.name;
+			auto& bufferType = compiler.get_type(resource.base_type_id);
+			auto bufferSize = compiler.get_declared_struct_size(bufferType);
+			int memberCount = bufferType.member_types.size();
+			uint32_t size = compiler.get_declared_struct_size(bufferType);
+			uint32_t offset = 0;
+		
+			if (m_PushConstantRanges.size())
+				offset = m_PushConstantRanges.back().Offset + m_PushConstantRanges.back().Size;
+		
+			auto& pushConstantRange = m_PushConstantRanges.emplace_back();
+			pushConstantRange.ShaderStage = shaderStage;
+			pushConstantRange.Size = bufferSize;
+			pushConstantRange.Offset = offset;
+		
+			// Skip empty push constant buffers
+			if (bufferName.empty())
+				continue;
+		
+			ShaderBuffer& buffer = m_Buffers[bufferName];
+			buffer.Name = bufferName;
+			buffer.Size = bufferSize;
+		
+			MC_CORE_TRACE("  Name: {0}", bufferName);
+			MC_CORE_TRACE("  Member Count: {0}", memberCount);
+			MC_CORE_TRACE("  Size: {0}", size);
+		
+			for (int i = 0; i < memberCount; i++)
+			{
+				auto type = compiler.get_type(bufferType.member_types[i]);
+				const auto& memberName = compiler.get_member_name(bufferType.self, i);
+				auto size = compiler.get_declared_struct_member_size(bufferType, i);
+				auto offset = compiler.type_struct_member_offset(bufferType, i);
+		
+				std::string uniformName = bufferName + "." + memberName;
+				buffer.Uniforms[uniformName] = ShaderUniform(uniformName, SPIRTypeToShaderUniformType(type), size, offset);
+			}
+		}
+		
+		MC_CORE_TRACE("Sampled Images: ");
+		for (const auto& resource : resources.sampled_images)
+		{
+			const auto& name = resource.name;
+			auto& type = compiler.get_type(resource.base_type_id);
+			auto binding = compiler.get_decoration(resource.id, spv::DecorationBinding);
+			uint32_t dimention = type.image.dim;
+		
+			auto& imageSampler = m_ImageSamplers[binding];
+			imageSampler.BindingPoint = binding;
+			imageSampler.Name = name;
+			imageSampler.ShaderStage = shaderStage;
+		}
 
-	if (m_PushConstantRanges.size())
-		offset = m_PushConstantRanges.back().Offset + m_PushConstantRanges.back().Size;
-
-	auto& pushConstantRange = m_PushConstantRanges.emplace_back();
-	pushConstantRange.ShaderStage = shaderStage;
-	pushConstantRange.Size = bufferSize;
-	pushConstantRange.Offset = offset;
-
-	// Skip empty push constant buffers
-	if (bufferName.empty())
-		continue;
-
-	ShaderBuffer& buffer = m_Buffers[bufferName];
-	buffer.Name = bufferName;
-	buffer.Size = bufferSize;
-
-	MC_CORE_TRACE("  Name: {0}", bufferName);
-	MC_CORE_TRACE("  Member Count: {0}", memberCount);
-	MC_CORE_TRACE("  Size: {0}", size);
-
-	for (int i = 0; i < memberCount; i++)
-	{
-		auto type = compiler.get_type(bufferType.member_types[i]);
-		const auto& memberName = compiler.get_member_name(bufferType.self, i);
-		auto size = compiler.get_declared_struct_member_size(bufferType, i);
-		auto offset = compiler.type_struct_member_offset(bufferType, i);
-
-		std::string uniformName = bufferName + "." + memberName;
-		buffer.Uniforms[uniformName] = ShaderUniform(uniformName, SPIRTypeToShaderUniformType(type), size, offset);
-	}
-}
-
-MC_CORE_TRACE("Sampled Images: ");
-for (const auto& resource : resources.sampled_images)
-{
-	const auto& name = resource.name;
-	auto& type = compiler.get_type(resource.base_type_id);
-	auto binding = compiler.get_decoration(resource.id, spv::DecorationBinding);
-	uint32_t dimention = type.image.dim;
-
-	auto& imageSampler = m_ImageSamplers[binding];
-	imageSampler.BindingPoint = binding;
-	imageSampler.Name = name;
-	imageSampler.ShaderStage = shaderStage;
-}
-
-MC_CORE_TRACE("==========================");
+		MC_CORE_TRACE("==========================");
 
 	}
 

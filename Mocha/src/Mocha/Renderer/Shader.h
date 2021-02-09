@@ -112,7 +112,7 @@ namespace Mocha {
 		inline uint32_t GetSize() const { return m_Size; }
 		inline uint32_t GetOffset() const { return m_Offset; }
 
-		static const std::string& UniformTypeToStriing(ShaderUniform type);
+		static const std::string& UniformTypeToString(ShaderUniformType type);
 
 	private:
 		std::string m_Name;

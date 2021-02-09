@@ -213,7 +213,8 @@ namespace Mocha {
 		}
 		else
 		{
-			
+			VulkanSwapchain& swapchain = VulkanContext::Get()->GetSwapchain();
+			m_RenderPass = swapchain.GetRenderPass();
 		}
 
 

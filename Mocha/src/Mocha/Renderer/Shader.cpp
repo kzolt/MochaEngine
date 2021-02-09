@@ -21,4 +21,22 @@ namespace Mocha {
 
 		return result;
 	}
+
+	ShaderUniform::ShaderUniform(const std::string& name, ShaderUniformType type, uint32_t size, uint32_t offset)
+		: m_Name(name), m_Type(type), m_Size(size), m_Offset(offset)
+	{
+	}
+
+	const std::string& ShaderUniform::UniformTypeToString(ShaderUniformType type)
+	{
+		switch (type)
+		{
+			case ShaderUniformType::Bool:		return "Boolean";
+			case ShaderUniformType::Int:		return "Int";
+			case ShaderUniformType::Float:		return "Float";
+		}
+
+		return "None";
+	}
+
 }

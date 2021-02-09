@@ -53,9 +53,10 @@ namespace Mocha {
 		s_ImGuiCommandBuffer = VulkanContext::GetCurrentDevice()->CreateSecondaryCommandBuffer();
 		s_CompositeCommandBuffer = VulkanContext::GetCurrentDevice()->CreateSecondaryCommandBuffer();
 
-		/*
+#if 1
 		{
 			FramebufferSpecification spec;
+			spec.SwapchainTarget = true;
 			s_Framebuffer = Framebuffer::Create(spec);
 
 			PipelineSpecification pipelineSpecification;
@@ -63,16 +64,14 @@ namespace Mocha {
 				{ ShaderDataType::Float3, "a_Position" },
 				{ ShaderDataType::Float4, "a_Color" }
 			};
-			
+			pipelineSpecification.Shader = Shader::Create("assets/shaders/Renderer2D.glsl");
+
 			RenderPassSpecification renderPassSpec;
 			renderPassSpec.TargetFramebuffer = s_Framebuffer;
-			pipelineSpecification.Layout = {
-				{ ShaderDataType::Float3, "a_Position" },
-				{ ShaderDataType::Float2, "a_TexCoord" }
-			};
+			pipelineSpecification.RenderPass = RenderPass::Create(renderPassSpec);
 			s_CompositePipeline = Pipeline::Create(pipelineSpecification);
 		}
-		*/
+#endif
 	}
 
 	static void CompositeRenderPass(VkCommandBufferInheritanceInfo& inheritanceInfo)
@@ -80,7 +79,7 @@ namespace Mocha {
 
 	}
 
-	// TODO: Combine Draw Commands
+	// TODO: Combine Draw Commands (ImGui and Draw)
 
 	void VulkanRenderer::Draw()
 	{
@@ -136,6 +135,7 @@ namespace Mocha {
 		vkCmdSetScissor(drawCommandBuffer, 0, 1, &scissor);
 
 		// TODO: Render Stuff
+
 
 		vkCmdEndRenderPass(drawCommandBuffer);
 	}

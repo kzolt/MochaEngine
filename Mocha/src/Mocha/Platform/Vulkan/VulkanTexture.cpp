@@ -52,7 +52,7 @@ namespace Mocha {
 		VkMemoryRequirements memoryRequirements{};
 		memoryRequirements.size = size;
 
-		//Copy to an optimal tiled image
+		// Copy to an optimal tiled image
 		// This loads the texture data into a host local buffer that is copied to the optimal tiled image on the device
 
 		// Create a host-visible staging buffer that contains the raw image data

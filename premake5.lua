@@ -20,11 +20,22 @@ IncludeDir["ImGui"] = "Mocha/vendor/ImGui"
 IncludeDir["STB"] = "Mocha/vendor/stb/include"
 
 LibraryDir = {}
+LibraryDir["shaderc"] = "vendor/shaderc/lib/Debug/shaderc.lib"
+LibraryDir["shaderc_util"] = "vendor/shaderc/lib/Debug/shaderc_util.lib"
+LibraryDir["glslang"] = "vendor/glslang/lib/Debug/glslangd.lib"
+LibraryDir["glslang_MachineIndependent"] = "vendor/glslang/lib/Debug/MachineIndependentd.lib"
+LibraryDir["glslang_SPIRV"] = "vendor/glslang/lib/Debug/SPIRVd.lib"
+LibraryDir["glslang_OGLCompiler"] = "vendor/glslang/lib/Debug/OGLCompilerd.lib"
+LibraryDir["glslang_OSDependent"] = "vendor/glslang/lib/Debug/OSDependentd.lib"
+LibraryDir["glslang_GenericCodeGen"] = "vendor/glslang/lib/Debug/GenericCodeGend.lib"
+LibraryDir["SPIRV_Tools"] = "vendor/SPIRV-Tools/lib/Debug/SPIRV-Tools.lib"
+LibraryDir["SPIRV_Tools_opt"] = "vendor/SPIRV-Tools/lib/Debug/SPIRV-Tools-opt.lib"
 LibraryDir["Vulkan"] = "vendor/Vulkan/lib/vulkan-1.lib"
 
 group "Dependencies"
 include "Mocha/vendor/GLFW"
 include "Mocha/vendor/ImGui"
+include "Mocha/vendor"
 group ""
 
 group "Core"
@@ -67,7 +78,19 @@ project "Mocha"
 	{
 		"GLFW",
 		"ImGui",
-		"%{LibraryDir.Vulkan}"
+		"SPIRV-Cross",
+		"%{LibraryDir.Vulkan}",
+
+		"%{LibraryDir.shaderc}",
+		"%{LibraryDir.shaderc_util}",
+		"%{LibraryDir.glslang}",
+		"%{LibraryDir.glslang_MachineIndependent}",
+		"%{LibraryDir.glslang_SPIRV}",
+		"%{LibraryDir.glslang_OGLCompiler}",
+		"%{LibraryDir.glslang_OSDependent}",
+		"%{LibraryDir.glslang_GenericCodeGen}",
+		"%{LibraryDir.SPIRV_Tools}",
+		"%{LibraryDir.SPIRV_Tools_opt}"
 	}
 
 	filter "system:windows"
